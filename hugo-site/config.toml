@@ -1,0 +1,26 @@
+baseURL = "https://afkprojects.online"
+title = "My Little Project"
+theme = "PaperMod"
+
+# Enable if you want dark mode support
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[params]
+    env = "production"
+    title = "Your Site Title"
+    description = "Your site description"
+    keywords = ["Blog", "Portfolio", "Hugo"]
+    author = "Your Name"
+    DateFormat = "January 2, 2006"
+    defaultTheme = "auto"
+    ShowReadingTime = true
+    ShowShareButtons = true
+    ShowPostNavLinks = true
+    ShowBreadCrumbs = true
+    ShowCodeCopyButtons = true
+    ShowWordCount = true
+    ShowRssButtonInSectionTermList = true
+    UseHugoToc = true

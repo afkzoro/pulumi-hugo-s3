@@ -1,0 +1,10 @@
+name: pulumi-hugo-s3
+description: Hugo site deployment with S3 and Cloudflare
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript
