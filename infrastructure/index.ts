@@ -3,7 +3,7 @@ import * as cloudflare from "@pulumi/cloudflare";
 import * as pulumi from "@pulumi/pulumi";
 
 const websiteBucket = new aws.s3.BucketV2("websiteBucket", {
-    bucket: "afkzoro-hugo-site",
+    bucket: "afkprojects.online",
     forceDestroy: false,
     objectLockEnabled: false,
 });
