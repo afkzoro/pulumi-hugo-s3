@@ -6,7 +6,7 @@ const config = new pulumi.Config();
 
 const websiteBucket = new aws.s3.BucketV2("websiteBucket", {
     bucket: config.require("bucketName"),
-    forceDestroy: false,
+    forceDestroy: true,
     objectLockEnabled: false,
 });
 
