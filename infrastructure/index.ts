@@ -1,9 +1,11 @@
 import * as aws from "@pulumi/aws";
 import * as cloudflare from "@pulumi/cloudflare";
 import * as pulumi from "@pulumi/pulumi";
+const config = new pulumi.Config();
+
 
 const websiteBucket = new aws.s3.BucketV2("websiteBucket", {
-    bucket: "afkprojects.online",
+    bucket: config.require("bucketName"),
     forceDestroy: false,
     objectLockEnabled: false,
 });
@@ -14,7 +16,7 @@ const websiteBucketConfiguration = new aws.s3.BucketWebsiteConfigurationV2("webs
         suffix: "index.html",
     },
     errorDocument: {
-        key: "error.html",
+        key: "index.html",
     },
 });
 
@@ -59,14 +61,13 @@ const bucketPolicy = new aws.s3.BucketPolicy("bucketPolicy", {
     }))
 });
 
-const domain = "afkprojects.online";
-const zoneId = "01e4285a6fee1d0469c4536734cf93f5";
 
 const cloudflareRecord = new cloudflare.Record("cloudflareRecord", {
-    zoneId,
-    name: domain,
+    zoneId: config.require("zoneId"),
+    name: config.require("domain"),
     type: "CNAME",
     value: websiteBucketConfiguration.websiteEndpoint.apply(endpoint => endpoint),
+    proxied: true
 });
 
 export const bucketWebsiteUrl = websiteBucketConfiguration.websiteEndpoint;

@@ -1,3 +1,9 @@
 config:
   cloudflare:apiToken:
     secure: AAABAAdUg7BOdBCZAjLs9CgBn/qxhkmAKHKIW3qKMMRfiSfkIh0NHvqBTphpeIdeAfIfEIpNeBCiZcOl9+ksq6mhTkbyPpWn
+  pulumi-hugo-s3:domain:
+    secure: AAABAETxrPaYJf4ZZ0Ez0Ek9kesYcB7bef3F1ELd29kpXmdezje9ZcNOSHJKan4JtRxDScjznHLlpzDFBpisGQ==
+  pulumi-hugo-s3:zoneId:
+    secure: AAABAOnmjnZCr2Y11dOpUFIXoE6ANmr587+Z4pldPRysOGQbZN47GjpRYcFJJ7bxaIycJrs8b9gz1kF/SJ+zHg==
+  pulumi-hugo-s3:bucketName:
+    secure: AAABAJUlrtInChcKuB+gLvgdvEsvQ2UZYB6g6Uc8Pk239yY3nH9+byla/K7RJDzJ2w8=
