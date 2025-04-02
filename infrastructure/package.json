@@ -1,4 +1,5 @@
 {
+    "license": "MIT",
     "name": "infrastructure",
     "main": "index.ts",
     "devDependencies": {

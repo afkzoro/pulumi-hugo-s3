@@ -1,4 +1,6 @@
-# Deploying a Hugo static website to AWS S3 and Cloudflare using Pulumi
+![Cover Image](./assets/cover.png)
+
+# Deploying a Hugo Static Website to AWS S3 and Cloudflare Using Pulumi
 
 This project demonstrates how to deploy a Hugo static site to AWS S3 with Cloudflare as a CDN, using Pulumi for infrastructure management and GitHub Actions for CI/CD.
 
@@ -261,7 +263,7 @@ Do you want to perform this update?  [Use arrows to move, type to filter]
   details
 ```
 
-As seen above, Pulumi is creating eight resources. Select yes using your arrow keys and watch your infrastructure get deployed with little effort.
+As seen above, Pulumi is creating eight resources. Select `yes` using your arrow keys and watch your infrastructure get deployed with little effort.
 
 ## Create and Update Hugo Content
 
@@ -290,3 +292,13 @@ Since the infrastructure is all set, you’ll want changes made to your Hugo blo
 Make sure you add the `AWS_S3_BUCKET`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`, as configured in the earlier steps, as secrets to your repository.
 
 ## Deployed Site
+![Live website with SSL/TLS configured](./assets/live-website.png)
+
+> you can check it out [here](https://afkprojects.online)
+
+## Closing Remarks
+This is a submission for the [Pulumi Deploy and Document Challenge](https://dev.to/challenges/pulumi): Fast Static Website Deployment
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
