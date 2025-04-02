@@ -10,7 +10,7 @@ This project demonstrates how to deploy a Hugo static site to AWS S3 with Cloudf
 
 To run this project, the following libraries and packages should be installed:
 
-- An active AWS account
+- An active AWS account.
 
 - Pulumi CLI: The Pulumi CLI (command-line interface) is the primary tool for interacting with Pulumi, an infrastructure-as-code platform, allowing you to build, deploy, and manage cloud infrastructure using familiar programming languages. The CLI is available on Windows, MacOs and Linux machines. Pulumi has provided an installation guide for the CLI in their [documentation](https://www.pulumi.com/docs/iac/download-install/):
 
@@ -78,7 +78,7 @@ pulumi-hugo-s3/
         └── deploy.yaml    # Deployment workflow
 ```
 
-The infrastructure sub-directory stores the configurations needed for your Infrastructure as Code setup. The hugo-site subdirectory stores the static files.
+The `infrastructure` sub-directory stores the configurations needed for your Infrastructure as Code setup. The `hugo-site` subdirectory stores the static files.
 
 1. To begin, navigate to the infrastructure directory and install the necessary dependencies:
 
@@ -92,12 +92,12 @@ In the AWS console, head over to _**IAM**_ > _**Users**_ > _**Create user**_:
 
 ![Create IAM User](./assets/Create-IAM-user.png)
 
-1. Create a user named pulumi-hugo-user. In the set permissions section, select attach policies directly, then under permission policies, select AmazonS3FullAccess and create the user:
+1. Create a user named `pulumi-hugo-user`. In the set permissions section, select attach policies directly, then under permission policies, select `AmazonS3FullAccess` and create the user:
 
 ![S3 Full Access](./assets/s3-full-access.png)
 
-1. Once the user has been created, you have to create access keys for the pulumi-hugo-user so you can send programmatic calls from the AWS CLI.
-Navigate to IAM> Users> pulumi-hugo-user > Security credentials > Create access key. Select CLI as the use case and create the access key.
+1. Once the user has been created, you have to create access keys for the `pulumi-hugo-user` so you can send programmatic calls from the AWS CLI.
+Navigate to _**IAM**_ > _**Users**_> _**pulumi-hugo-user**_ > _**Security credentials**_ > _**Create access key**_. Select CLI as the use case and create the access key.
 
 > [!IMPORTANT]
 > Make sure you download the credentials in a .csv file. You’ll need them to configure your CLI and GitHub actions(later)
