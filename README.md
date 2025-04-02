@@ -294,7 +294,7 @@ Since the infrastructure is all set, you’ll want changes made to your Hugo blo
 Make sure you add the `AWS_S3_BUCKET`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`, as configured in the earlier steps, as secrets to your repository.
 
 ## Deployed Site
-![Live website with SSL/TLS configured](./assets/live-website.png)
+![Live website with SSL/TLS configured](/assets/live-website.png)
 
 > you can check it out [here](https://afkprojects.online)
 
