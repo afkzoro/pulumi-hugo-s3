@@ -143,7 +143,7 @@ const websiteBucketConfiguration = new aws.s3.BucketWebsiteConfigurationV2("webs
 This code block in index.ts creates an S3 bucket and configures it for static website hosting, setting both the index and error pages to `index.html`. You can check out why [here](https://stackoverflow.com/a/44382921/19621637).
 
 > [!WARNING] 
-> Many Pulumi configurations for S3 buckets have migrated to V2. However, BucketV2 appears to supersede Bucket, as it better matches the upstream AWS API, but it's unclear if it will be deprecated.
+> Many Pulumi configurations for S3 buckets have migrated to `V2`. However, `BucketV2` appears to supersede `Bucket`, as it better matches the upstream AWS API, but it's unclear if it will be deprecated.
 
 
 The bucketName(as seen in `config.require()`) can be stored as a secret using Pulumi config:
@@ -152,7 +152,7 @@ The bucketName(as seen in `config.require()`) can be stored as a secret using Pu
 $ pulumi config set --secret bucketName <bucket_name>
 ```
 
-This stores the bucketName as an encrypted value in your Pulumi.dev.yaml file.
+This stores the `bucketName` as an encrypted value in your `Pulumi.dev.yaml` file.
 
 > [!NOTE]
 > If you want to deploy with a live domain, consider naming your bucket after your domain name. For example:
@@ -216,14 +216,14 @@ const cloudflareRecord = new cloudflare.Record("cloudflareRecord", {
 
 This creates a Cloudflare DNS record that points your domain to the S3 bucket website endpoint, with Cloudflare proxying enabled.
 
-You can set your zoneId and domain using Pulumi config:
+You can set your `zoneId` and `domain` using Pulumi config:
 
 ```bash
 $ pulumi config set --secret zoneId <zone_id>
 $ pulumi config set --secret domain <domain_name>
 ```
 
-To use Pulumi with the Cloudflare provider, you must set your Cloudflare account's apiKey or apiToken as a config variable. Head over to your Cloudflare account and create an apiToken with a short validity period and permissions to create DNS records:
+To use Pulumi with the Cloudflare provider, you must set your Cloudflare account's `apiKey` or `apiToken` as a config variable. Head over to your Cloudflare account and create an `apiToken` with a short validity period and permissions to create DNS [records](https://poshac.me/docs/v4/Plugins/Cloudflare/#api-token). 
 
 Copy the created token and store it as a config secret:
 
@@ -287,6 +287,6 @@ theme = "theme-name"
 
 Since the infrastructure is all set, you’ll want changes made to your Hugo blog to be deployed fast. This project uses GitHub actions to sync the contents of your /public directory to the S3 bucket provisioned with Pulumi. You can see this workflow in deploy.yml.
 
-Make sure you add the AWS_S3_BUCKET, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY, as configured in the earlier steps, as secrets to your repository.
+Make sure you add the `AWS_S3_BUCKET`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`, as configured in the earlier steps, as secrets to your repository.
 
 ## Deployed Site
