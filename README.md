@@ -84,23 +84,19 @@ $ npm install
 
 1. Next, since we’re utilizing AWS S3, let’s create a dedicated IAM user following the principle of least privilege and configure the credentials on our AWS CLI.
 
-In the AWS console, head over to IAM> Users > Create user:
+In the AWS console, head over to _**IAM**_ > _**Users**_ > _**Create user**_:
 
-![Create-IAM-user.png](Deploying%20a%20Hugo%20static%20website%20to%20AWS%20S3%20and%20Clou%201c672922be708047be58f734b4b2c1b3/Create-IAM-user.png)
+![Create IAM User](./assets/Create-IAM-user.png)
 
 1. Create a user named pulumi-hugo-user. In the set permissions section, select attach policies directly, then under permission policies, select AmazonS3FullAccess and create the user:
 
-![s3-full-access.png](Deploying%20a%20Hugo%20static%20website%20to%20AWS%20S3%20and%20Clou%201c672922be708047be58f734b4b2c1b3/s3-full-access.png)
+![S3 Full Access](./assets/s3-full-access.png)
 
 1. Once the user has been created, you have to create access keys for the pulumi-hugo-user so you can send programmatic calls from the AWS CLI.
 Navigate to IAM> Users> pulumi-hugo-user > Security credentials > Create access key. Select CLI as the use case and create the access key.
 
-<aside>
-💡
-
-Make sure you download the credentials in a .csv file. You’ll need them to configure your CLI and GitHub actions(later)
-
-</aside>
+> [!IMPORTANT]
+> Make sure you download the credentials in a .csv file. You’ll need them to configure your CLI and GitHub actions(later)
 
 1. Back in your local machine, open up a terminal, and run the following commands to configure your AWS CLI using the downloaded credentials:
 
@@ -116,9 +112,9 @@ Hence, we’ve configured and installed all necessary dependencies needed for in
 
 ## Infrastructure Code with Pulumi
 
-All IAC configurations are placed in index.ts of the infrastructure directory. Navigate to the infrastructure directory, log in to your Pulumi account, and create a Pulumi stack for your dev environment(delete Pulumi.dev.yaml first):
+All IAC configurations are placed in `index.ts` of the infrastructure directory. Navigate to the infrastructure directory, log in to your Pulumi account, and create a Pulumi stack for your dev environment(delete Pulumi.dev.yaml first):
 
-```tsx
+```bash
 $ pulumi login
 $ pulumi stack init dev
 ```
@@ -146,14 +142,11 @@ const websiteBucketConfiguration = new aws.s3.BucketWebsiteConfigurationV2("webs
 
 This code block in index.ts creates an S3 bucket and configures it for static website hosting, setting both the index and error pages to `index.html`. You can check out why [here](https://stackoverflow.com/a/44382921/19621637).
 
-<aside>
-💡
+> [!WARNING] 
+> Many Pulumi configurations for S3 buckets have migrated to V2. However, BucketV2 appears to supersede Bucket, as it better matches the upstream AWS API, but it's unclear if it will be deprecated.
 
-Many Pulumi configurations for S3 buckets have migrated to V2. However, BucketV2 appears to supersede Bucket, as it better matches the upstream AWS API, but it's unclear if it will be deprecated.
 
-</aside>
-
-The bucketName(as seen in config.require()) can be stored as a secret using Pulumi config:
+The bucketName(as seen in `config.require()`) can be stored as a secret using Pulumi config:
 
 ```bash
 $ pulumi config set --secret bucketName <bucket_name>
@@ -161,16 +154,11 @@ $ pulumi config set --secret bucketName <bucket_name>
 
 This stores the bucketName as an encrypted value in your Pulumi.dev.yaml file.
 
-<aside>
-💡
-
-If you want to deploy with a live domain, consider naming your bucket after your domain name. For example:
-
-```bash
-$ pulumi config set --secret bucketName afkprojects.online
-```
-
-</aside>
+> [!NOTE]
+> If you want to deploy with a live domain, consider naming your bucket after your domain name. For example:
+> ```bash
+> $ pulumi config set --secret bucketName afkprojects.online
+> ```
 
 1. **Bucket Access Controls**
 
