@@ -1,7 +1,7 @@
 # Deploying a Hugo Static Website to AWS S3 and Cloudflare Using Pulumi
 
 <p align="center">
-  <img src="./assets/cover.png" alt="Cover Image" width="100%" style="max-width: 800px;">
+  <img src="./assets/cover2.png" alt="Cover Image" width="100%" style="max-width: 800px;">
 </p>
 
 This project demonstrates how to deploy a Hugo static site to AWS S3 with Cloudflare as a CDN, using Pulumi for infrastructure management and GitHub Actions for CI/CD.
